@@ -5357,8 +5357,9 @@ var ioUtil = createCommonjsModule(function(e, t) {
 }, __spreadProps$2 = (e, t) => __defProps$2(e, __getOwnPropDescs$2(t));
 async function exec(e, t) {
   let n = "", s = "";
-  const o = Date.now(), i = await exec_1.exec(e, null, __spreadProps$2(__spreadValues$2({}, t), {
-    silent: !0,
+  const o = Date.now(), i = await exec_1.exec(e, null, __spreadProps$2(__spreadValues$2({
+    silent: !0
+  }, t), {
     listeners: {
       stdout(a) {
         n += a.toString();
@@ -5432,7 +5433,7 @@ async function buildRef({
 ${u.message}`);
       }), core.info(`Running build command: ${n}`);
       const a = Date.now();
-      await exec(n, { cwd: s }).catch((u) => {
+      await exec(n, { cwd: s, silent: !1 }).catch((u) => {
         throw new Error(`Failed to run build command: ${n}
 ${u.message}`);
       }), core.info(`Build completed in ${(Date.now() - a) / 1e3}s`);
