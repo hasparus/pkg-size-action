@@ -52,7 +52,7 @@ async function buildRef({
 
 			log.info(`Running build command: ${buildCommand}`);
 			const buildStart = Date.now();
-			await exec(buildCommand, { cwd }).catch((error) => {
+			await exec(buildCommand, { cwd, silent: false }).catch((error) => {
 				throw new Error(`Failed to run build command: ${buildCommand}\n${error.message}`);
 			});
 			log.info(`Build completed in ${(Date.now() - buildStart) / 1000}s`);
